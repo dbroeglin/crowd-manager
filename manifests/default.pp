@@ -42,8 +42,26 @@ class play($version = "2.1.1", $install_path = "/opt") {
     target  => "$play_path/play",
     require => File["$play_path/play"],
   }
+}
 
+class crowd($version = "2.6.2", $install_path = "/opt") {
+  include wget
 
+  $crowd_version = $version
+  $crowd_path    = "${install_path}/crowd-${crowd_version}"
+  $download_url  = "http://www.atlassian.com/software/crowd/downloads/binary/atlassian-crowd-${crowd_version}.tar.gz"
+
+  wget::fetch {"download-crowd-framework":
+    source      => "$download_url",
+    destination => "/opt/atlassian-crowd-${crowd_version}.tar.gz",
+    timeout     => 0,
+    require     => [ File[$install_path] ],
+  } -> exec { "unzip-crowd-framework":
+    cwd     => "${install_path}",
+    command => "sudo -u vagrant tar zxvf ${install_path}/atlassian-crowd-${crowd_version}.tar.gz",
+    unless  => "test -d $crowd_path",
+  }
 }
 
 include play
+include crowd
