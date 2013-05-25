@@ -46,9 +46,11 @@ class play($version = "2.1.1", $install_path = "/opt") {
 
 class crowd($version = "2.6.2", $install_path = "/opt") {
   include wget
+  include stdlib
 
   $crowd_version = $version
-  $crowd_path    = "${install_path}/crowd-${crowd_version}"
+  $crowd_path    = "${install_path}/atlassian-crowd-${crowd_version}"
+  $crowd_home    = "/var/opt/crowd-home"
   $download_url  = "http://www.atlassian.com/software/crowd/downloads/binary/atlassian-crowd-${crowd_version}.tar.gz"
 
   wget::fetch {"download-crowd-framework":
@@ -60,8 +62,16 @@ class crowd($version = "2.6.2", $install_path = "/opt") {
     cwd     => "${install_path}",
     command => "sudo -u vagrant tar zxvf ${install_path}/atlassian-crowd-${crowd_version}.tar.gz",
     unless  => "test -d $crowd_path",
+  } -> file { $crowd_home:
+    ensure  => directory,
+    owner   => vagrant,
+    group   => vagrant
+  } -> file_line { "set_crowd_home_directory":
+    path => "${crowd_path}/crowd-webapp/WEB-INF/classes/crowd-init.properties",
+    line => "crowd.home=${crowd_home}"
   }
 }
 
 include play
 include crowd
+
