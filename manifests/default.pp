@@ -1,18 +1,5 @@
 Exec { path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/sbin/" ] }
 
-file { "/opt":
-  ensure  => "directory",
-  owner   => "vagrant",
-  group   => "vagrant",
-  mode    => 0755,
-}
-
-package { [
-  "openjdk-7-jdk",
-  "unzip",
-  ]: ensure  => installed; 
-}
-
 class play($version = "2.1.1", $install_path = "/opt") {
   include wget
 
@@ -72,6 +59,18 @@ class crowd($version = "2.6.2", $install_path = "/opt") {
   }
 }
 
+file { "/opt":
+  ensure  => "directory",
+  owner   => "vagrant",
+  group   => "vagrant",
+  mode    => 0755,
+}
+
+package { [
+  "openjdk-7-jdk",
+  "unzip",
+  ]: ensure  => installed; 
+}
+
 include play
 include crowd
-
