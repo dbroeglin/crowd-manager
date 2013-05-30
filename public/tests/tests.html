@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Mocha</title>
+    <title>crowd-manager mocha tests</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="mocha.css" />
@@ -10,7 +10,11 @@
     <div id="mocha"></div>
     <script src="lib/mocha.js"></script>
     <script src="lib/chai.js"></script>
-    <script>mocha.setup('bdd')</script>
+    <script src="lib/chai-backbone.js"></script>
+    <script>
+      mocha.setup('bdd')
+      var expect = chai.expect
+    </script>
     <script src="my-tests.js"></script>
     <script src="my-coffee-tests.js"></script>
     <script>
