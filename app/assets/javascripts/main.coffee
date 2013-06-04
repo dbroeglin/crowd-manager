@@ -1,17 +1,11 @@
-CrowdManager = new Marionette.Application
+require ["user_search_view"], (UserSearchView) ->
+  CrowdManager = new Marionette.Application
 
-CrowdManager.addRegions
-  searchRegion: "#search-region"
-  resultsRegion: "#results-region"
+  CrowdManager.addRegions
+    searchRegion: "#search-region"
+    resultsRegion: "#results-region"
 
-CrowdManager.UserSearchView = Backbone.Marionette.ItemView.extend
-  template: "#user-search-template"
-  events:
-    "click input[name=username]": "clickOnInput"
-  clickOnInput: (e) ->
-    console.log("Click", e)
+  CrowdManager.on "initialize:after", ->
+    CrowdManager.searchRegion.show new UserSearchView
 
-CrowdManager.on "initialize:after", ->
-  CrowdManager.searchRegion.show new CrowdManager.UserSearchView
-
-CrowdManager.start()
+  CrowdManager.start()
