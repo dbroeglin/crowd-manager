@@ -17,10 +17,12 @@
       var expect = chai.expect
     </script>
     <script type="text/javascript" data-main="/assets/tests/require-config" src="/assets/javascripts/require.js"></script>
-    <script src="my-coffee-tests.js"></script>
     <script>
-      it('should wait a bit for require to load deps', function(done) { setTimeout(done, 500); });
-      mocha.run();
+      require([
+        '../tests/my-coffee-tests'
+      ], function() { 
+        mocha.run();
+      });
     </script>
   </body>
 </html>
