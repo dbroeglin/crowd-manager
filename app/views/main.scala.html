@@ -20,9 +20,31 @@
     <div id="results-region" class="container"></div>
 
     <script type="text/template"id="user-search-template">
-      <form>
-        <label>Username: <input type="text" name="username"></label>
-        <label>Application: <input type="text" name="application"></label>
+      <form class="form-horizontal">
+        <div class="control-group">
+          <label class="control-label">Username:</label>
+          <div class="controls">
+            <input type="text" name="username">
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Current password:</label>
+          <div class="controls">
+            <input type="password" name="current_password">
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">New password:</label>
+          <div class="controls">
+            <input type="password" name="new_password">
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Confirm password:</label>
+          <div class="controls">
+            <input type="password" name="confirm_password">
+          </div>
+        </div>
       </form>
     </script>
 
