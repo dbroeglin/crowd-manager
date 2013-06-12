@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="mocha.css" />
   </head>
   <body>
+
     <div id="mocha"></div>
     <script src="lib/mocha.js"></script>
     <script src="lib/chai.js"></script>
@@ -15,9 +16,10 @@
       mocha.setup('bdd')
       var expect = chai.expect
     </script>
-    <script src="my-tests.js"></script>
+    <script type="text/javascript" data-main="/assets/tests/require-config" src="/assets/javascripts/require.js"></script>
     <script src="my-coffee-tests.js"></script>
     <script>
+      it('should wait a bit for require to load deps', function(done) { setTimeout(done, 500); });
       mocha.run();
     </script>
   </body>

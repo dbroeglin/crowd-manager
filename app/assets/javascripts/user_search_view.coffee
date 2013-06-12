@@ -1,4 +1,4 @@
-define [], ->
+define ['marionette'], ->
   Backbone.Marionette.ItemView.extend
     template: "#user-search-template"
     events:
