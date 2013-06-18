@@ -1,6 +1,6 @@
-define ['marionette'], ->
+define ['marionette', 'text!tpl/user_search_view.html'], (M, Template)->
   Backbone.Marionette.ItemView.extend
-    template: "#user-search-template"
+    template: _.template(Template)
     events:
       "click input[name=username]": "clickOnInput"
     clickOnInput: (e) ->
