@@ -5,11 +5,15 @@ require.config(
     underscore: 'vendor/underscore',
     backbone: 'vendor/backbone',
     marionette: 'vendor/backbone.marionette',
+    stickit: 'vendor/backbone.stickit.min'
   },
   shim: {
     'marionette': {
-      deps: ['backbone'],
+      deps: ['backbone', 'stickit'],
       exports: 'Backbone.Marionette'
+    },
+    'stickit': {
+      deps: ['backbone'],
     },
     'backbone': {
       deps: ['underscore', 'jquery'],
