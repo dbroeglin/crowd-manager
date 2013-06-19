@@ -1,8 +1,8 @@
-define ['user_search_view'], (UserSearchView) ->
+define ['pwd_change_view'], (PwdChangeView) ->
   beforeEach ->
-    this.search = new UserSearchView
+    this.search = new PwdChangeView
 
-  describe 'UserSearchView', ->
+  describe 'PwdChangeView', ->
     beforeEach ->
       this.search.render()
 

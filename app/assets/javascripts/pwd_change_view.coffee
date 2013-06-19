@@ -1,7 +1,7 @@
-define ['marionette', 'text!tpl/user_search_view.html', 'user_search_model'], (M, Template, UserSearchModel) ->
+define ['marionette', 'text!tpl/pwd_change_view.html', 'pwd_change_model'], (M, Template, PwdChangeModel) ->
   Backbone.Marionette.ItemView.extend
     template: _.template(Template)
-    model: new UserSearchModel 
+    model: new PwdChangeModel 
     bindings:
       "input[name=username]": "username"
       "input[name=current_password]": "current_password"

@@ -1,8 +1,8 @@
-define ['user_search_model'], (UserSearchModel) ->
+define ['pwd_change_model'], (PwdChangeModel) ->
 
-  describe 'UserSearchModel', ->
+  describe 'PwdChangeModel', ->
     beforeEach ->
-      this.model = new UserSearchModel
+      this.model = new PwdChangeModel
 
     it 'should respond to validate', ->
       this.model.should.respondTo('validate')

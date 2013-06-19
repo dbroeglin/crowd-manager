@@ -1,4 +1,4 @@
-define ["user_search_view"], (UserSearchView) ->
+define ["pwd_change_view"], (PwdChangeView) ->
   CrowdManager = new Marionette.Application
 
   CrowdManager.addRegions
@@ -6,6 +6,6 @@ define ["user_search_view"], (UserSearchView) ->
     resultsRegion: "#results-region"
 
   CrowdManager.on "initialize:after", ->
-    CrowdManager.searchRegion.show new UserSearchView
+    CrowdManager.searchRegion.show new PwdChangeView
 
   return CrowdManager
